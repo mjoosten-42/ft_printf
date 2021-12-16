@@ -7,14 +7,13 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ) 
 	cp $(LIBFT) .
 	mv libft.a $(NAME)
 	ar -crs $(NAME) $(OBJ)
 
 $(LIBFT): 
 	make -C libft
-	make clean -C libft
 
 %.o: %.c
 	$(CC) $(FLAGS) $^
