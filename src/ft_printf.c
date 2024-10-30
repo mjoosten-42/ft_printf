@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                         :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjoosten <mjoosten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 16:30:53 by mjoosten          #+#    #+#             */
-/*   Updated: 2022/03/21 10:09:53 by mjoosten         ###   ########.fr       */
+/*   Created: 2022/01/24 15:43:56 by mjoosten          #+#    #+#             */
+/*   Updated: 2024/10/30 16:32:48 by mjoosten       ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+int ft_printf(const char *format, ...) {
+	va_list ap;
 
-int	ft_printf(const char *format, ...);
+	va_start(ap, format);
+	int ret = ft_vprintf(format, ap);
+	va_end(ap);
 
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr_base(long nbr, char *base);
-int	ft_strlen(const char *s);
-
-#endif
+	return ret;
+}

@@ -1,23 +1,85 @@
-NAME = libftprintf.a
+NAME = libft_printf.a
+
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
-SRC = ft_printf.c ft_printf_utils.c
-OBJ = $(SRC:.c=.o)
+
+HFLAGS  = -MMD -MP
+CFLAGS  = -Wall -Wextra -Werror
+LDFLAGS = 
+
+SRC_DIR = src
+OBJ_DIR = obj
+LIB_DIR = lib
+
+LIBFT = lib/libft/libft.a
+
+export MAKEFLAGS = "-j 8"
+
+include make/sources.mk
+include make/headers.mk
+include make/include.mk
+
+INCLUDES += -I lib/libft/include
+
+OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SOURCES:.c=.o))
+
+DEBUG   ?= 1
+VERBOSE ?= 0
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -O0 -g
+endif
+
+ifeq ($(VERBOSE), 1)
+	CFLAGS += -DVERBOSE
+endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ) 
-	ar -crs $@ $(OBJ)
+$(NAME): $(OBJECTS)
+	ar -crs $@  $^
 
-%.o: %.c
-	$(CC) $(FLAGS) -c $^
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(HFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $@
 
 clean:
-	rm -f $(OBJ)
+	$(RM) -r $(OBJ_DIR)
+	make -C lib/libft clean
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	make -C lib/libft fclean
 
-re: fclean all
+$(LIBFT):
+	make -C lib/libft
 
-.PHONY = all clean fclean re
+re:
+	make fclean
+	make all
+
+test:
+	$(CC) main.c $(NAME) -I inc && ./a.out
+
+files:
+	./make/make_sources.sh
+
+print: 
+	@echo "---SOURCES: $(SOURCES)" | xargs -n1
+	@echo "---HEADERS: $(HEADERS)" | xargs -n1
+	@echo "---OBJECTS: $(OBJECTS)" | xargs -n1
+
+format: files
+	clang-format -i $(SOURCES) $(HEADERS)
+
+scan: clean
+	scan-build make
+
+ctags:
+	ctags $(SOURCES) $(HEADERS)
+
+.PHONY: all test clean fclean re files print format scan ctags
+
+-include $(OBJECTS:.o=.d)
+

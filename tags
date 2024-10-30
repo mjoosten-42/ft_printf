@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/mjoosten/Desktop/ft_printf/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+FT_PRINTF_H	inc/ft_printf.h	/^#define FT_PRINTF_H$/;"	d
+STRING_H	inc/c_string.h	/^#define STRING_H$/;"	d
+begin	inc/c_string.h	/^  char *begin;$/;"	m	struct:s_string	typeref:typename:char *
+capacity	inc/c_string.h	/^  size_t capacity;$/;"	m	struct:s_string	typeref:typename:size_t
+end	inc/c_string.h	/^  char *end;$/;"	m	struct:s_string	typeref:typename:char *
+ft_printf	src/ft_printf.c	/^ssize_t ft_printf(const char *format, ...) {$/;"	f	typeref:typename:ssize_t
+ft_vprintf	src/ft_vprintf.c	/^ssize_t ft_vprintf(const char *format, va_list ap) {$/;"	f	typeref:typename:ssize_t
+s_string	inc/c_string.h	/^typedef struct s_string {$/;"	s
+string	inc/c_string.h	/^typedef t_string *string;$/;"	t	typeref:typename:t_string *
+string_data	src/c_string.c	/^char *string_data(const string str) { return str->begin; }$/;"	f	typeref:typename:char *
+string_delete	src/c_string.c	/^void string_delete(string str) {$/;"	f	typeref:typename:void
+string_length	src/c_string.c	/^size_t string_length(string str) { return string_size(str) - 1; }$/;"	f	typeref:typename:size_t
+string_new	src/c_string.c	/^string string_new() {$/;"	f	typeref:typename:string
+string_push_back	src/c_string.c	/^void string_push_back(string str, char c) {$/;"	f	typeref:typename:void
+string_reserve	src/c_string.c	/^void string_reserve(string str, size_t size) {$/;"	f	typeref:typename:void
+string_size	src/c_string.c	/^size_t string_size(string str) { return str->end - str->begin; }$/;"	f	typeref:typename:size_t
+t_string	inc/c_string.h	/^} t_string;$/;"	t	typeref:struct:s_string
