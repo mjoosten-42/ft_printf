@@ -36,7 +36,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar -crs $@  $^
+	ar -crs $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(HFLAGS) $(INCLUDES) -c $< -o $@
@@ -60,7 +60,7 @@ re:
 	make all
 
 test:
-	$(CC) main.c $(NAME) -I inc && ./a.out
+	$(CC) main.c $(NAME) -I inc $(LIBFT) && ./a.out
 
 files:
 	./make/make_sources.sh

@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+
 #include <stdio.h>
 
 int ft_fprintf(FILE *stream, const char *format, ...) {
@@ -10,4 +11,3 @@ int ft_fprintf(FILE *stream, const char *format, ...) {
 
 	return ret;
 }
-

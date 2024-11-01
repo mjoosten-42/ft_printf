@@ -3,8 +3,7 @@
 #include <stdio.h>
 
 int main(int argc, char **argv) {
-	ssize_t ret = ft_printf("hello\n");
-
-	printf("ret: %li\n", ret);
+	printf("[%s]\n", "test");
+	ft_printf("[%s]\n", "test");
 }
 

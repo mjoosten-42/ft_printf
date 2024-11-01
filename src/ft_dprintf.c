@@ -9,4 +9,3 @@ int ft_dprintf(int fd, const char *format, ...) {
 
 	return ret;
 }
-

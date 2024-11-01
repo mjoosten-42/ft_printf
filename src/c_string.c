@@ -4,12 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-string string_new() {
+string string_new(size_t initial_size) {
 	string str = malloc(sizeof(*str));
 
-	str->begin	  = malloc(1);
+	str->begin	  = malloc(initial_size);
 	str->end	  = str->begin + 1;
-	str->capacity = 1;
+	str->capacity = initial_size;
 	*str->begin	  = '\0';
 
 	return str;

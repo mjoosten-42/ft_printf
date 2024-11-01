@@ -11,7 +11,7 @@ typedef struct s_string {
 
 typedef t_string *string;
 
-string string_new();
+string string_new(size_t initial_size);
 void   string_delete(string str);
 
 size_t string_size(const string str);

@@ -16,16 +16,25 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-int ft_printf(const char *format, ...)
-	__attribute__((format(printf, 1, 2)));
+int ft_printf(const char *format, ...) __attribute__((format(printf, 1, 2)));
 int ft_fprintf(FILE *stream, const char *format, ...)
 	__attribute__((format(printf, 2, 3)));
-int ft_dprintf(int fd, const char *format, ...) __attribute__((format(printf, 2, 3)));
+int ft_dprintf(int fd, const char *format, ...)
+	__attribute__((format(printf, 2, 3)));
 
 int ft_vprintf(const char *format, va_list ap)
 	__attribute__((format(printf, 1, 0)));
 int ft_vfprintf(FILE *stream, const char *format, va_list ap)
 	__attribute__((format(printf, 2, 0)));
-int ft_vdprintf(int fd, const char *format, va_list ap) __attribute__ ((format(printf, 2, 0)));
+int ft_vdprintf(int fd, const char *format, va_list ap)
+	__attribute__((format(printf, 2, 0)));
+
+/*
+int ft_xvdprintf(int		 fd,
+				 const char *format,
+				 va_list	 ap,
+				 void (*putc)(void *p, char c),
+				 void *p) __attribute__((format(printf, 2, 0)));
+*/
 
 #endif
