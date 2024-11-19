@@ -54,3 +54,11 @@ void string_push_back(string str, char c) {
 	*str->end		= '\0';
 	str->end++;
 }
+
+void string_append(string str, const char *s, size_t n) {
+	string_reserve(str, string_size(str) + n);
+
+	for (size_t i = 0; i < n && s[i]; i++) {
+		string_push_back(str, s[i]);
+	}
+}

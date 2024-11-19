@@ -4,36 +4,49 @@
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/maarten/ft_printf/	//
+!_TAG_PROC_CWD	/home/mjoosten/Desktop/ft_printf/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-CONVERSION	src/ft_vdprintf.c	/^	CONVERSION,$/;"	e	enum:e_state	file:
-DONE	src/ft_vdprintf.c	/^	DONE$/;"	e	enum:e_state	file:
-FLAGS	src/ft_vdprintf.c	/^	FLAGS,$/;"	e	enum:e_state	file:
 FT_PRINTF_H	inc/ft_printf.h	/^#define FT_PRINTF_H$/;"	d
-LENGTH	src/ft_vdprintf.c	/^	LENGTH,$/;"	e	enum:e_state	file:
-MAX	src/ft_vdprintf.c	/^#define MAX(/;"	d	file:
-PRECISION	src/ft_vdprintf.c	/^	PRECISION,$/;"	e	enum:e_state	file:
+FT_PRINTF_UTILS_H	inc/ft_printf_utils.h	/^#define FT_PRINTF_UTILS_H$/;"	d
+LENGTH_CHAR	inc/ft_printf_utils.h	/^	LENGTH_CHAR,$/;"	e	enum:__anone90ee2e00103
+LENGTH_INTMAX_T	inc/ft_printf_utils.h	/^	LENGTH_INTMAX_T,$/;"	e	enum:__anone90ee2e00103
+LENGTH_LONG	inc/ft_printf_utils.h	/^	LENGTH_LONG,$/;"	e	enum:__anone90ee2e00103
+LENGTH_LONG_DOUBLE	inc/ft_printf_utils.h	/^	LENGTH_LONG_DOUBLE,$/;"	e	enum:__anone90ee2e00103
+LENGTH_LONG_LONG	inc/ft_printf_utils.h	/^	LENGTH_LONG_LONG,$/;"	e	enum:__anone90ee2e00103
+LENGTH_PTRDIFF_T	inc/ft_printf_utils.h	/^	LENGTH_PTRDIFF_T,$/;"	e	enum:__anone90ee2e00103
+LENGTH_SHORT	inc/ft_printf_utils.h	/^	LENGTH_SHORT,$/;"	e	enum:__anone90ee2e00103
+LENGTH_SIZE_T	inc/ft_printf_utils.h	/^	LENGTH_SIZE_T,$/;"	e	enum:__anone90ee2e00103
 STRING_H	inc/c_string.h	/^#define STRING_H$/;"	d
-WIDTH	src/ft_vdprintf.c	/^	WIDTH,$/;"	e	enum:e_state	file:
+__anone90ee2e00103	inc/ft_printf_utils.h	/^typedef enum {$/;"	g
+__anone90ee2e00208	inc/ft_printf_utils.h	/^typedef struct {$/;"	s
+__anone90ee2e00308	inc/ft_printf_utils.h	/^typedef struct {$/;"	s
+all_conversions	src/convert.c	/^static const char *all_conversions		= "diouxXeEfFgGaAcsCSPnm%";$/;"	v	typeref:typename:const char *	file:
+all_flags	src/convert.c	/^static const char *all_flags			= "#0- +";$/;"	v	typeref:typename:const char *	file:
+all_length_modifiers	src/convert.c	/^static const char *all_length_modifiers = "hlqLjzZt";$/;"	v	typeref:typename:const char *	file:
 begin	inc/c_string.h	/^	char	 *begin;$/;"	m	struct:s_string	typeref:typename:char *
 capacity	inc/c_string.h	/^	size_t capacity;$/;"	m	struct:s_string	typeref:typename:size_t
-e_state	src/ft_vdprintf.c	/^typedef enum e_state {$/;"	g	file:
+conversion	inc/ft_printf_utils.h	/^	char	 conversion;$/;"	m	struct:__anone90ee2e00308	typeref:typename:char
+convert	src/convert.c	/^const char *convert(string output, const char *format, va_list ap) {$/;"	f	typeref:typename:const char *
+e_length	inc/ft_printf_utils.h	/^} e_length;$/;"	t	typeref:enum:__anone90ee2e00103
 end	inc/c_string.h	/^	char	 *end;$/;"	m	struct:s_string	typeref:typename:char *
+flags	inc/ft_printf_utils.h	/^	t_flags	 flags;$/;"	m	struct:__anone90ee2e00308	typeref:typename:t_flags
 ft_dprintf	src/ft_dprintf.c	/^int ft_dprintf(int fd, const char *format, ...) {$/;"	f	typeref:typename:int
 ft_fprintf	src/ft_fprintf.c	/^int ft_fprintf(FILE *stream, const char *format, ...) {$/;"	f	typeref:typename:int
 ft_printf	src/ft_printf.c	/^int ft_printf(const char *format, ...) {$/;"	f	typeref:typename:int
 ft_vdprintf	src/ft_vdprintf.c	/^int ft_vdprintf(int fd, const char *format, va_list ap) {$/;"	f	typeref:typename:int
 ft_vfprintf	src/ft_vfprintf.c	/^int ft_vfprintf(FILE *stream, const char *format, va_list ap) {$/;"	f	typeref:typename:int
 ft_vprintf	src/ft_vprintf.c	/^int ft_vprintf(const char *format, va_list ap) {$/;"	f	typeref:typename:int
-left_align	src/ft_vdprintf.c	/^	unsigned int left_align : 1;$/;"	m	struct:s_flags	typeref:typename:unsigned int:1	file:
-put_blank	src/ft_vdprintf.c	/^	unsigned int put_blank : 1;$/;"	m	struct:s_flags	typeref:typename:unsigned int:1	file:
-s_flags	src/ft_vdprintf.c	/^typedef struct s_flags {$/;"	s	file:
+left_align	inc/ft_printf_utils.h	/^	unsigned int left_align : 1;$/;"	m	struct:__anone90ee2e00208	typeref:typename:unsigned int:1
+length	inc/ft_printf_utils.h	/^	e_length length;$/;"	m	struct:__anone90ee2e00308	typeref:typename:e_length
+parse	src/convert.c	/^const char *parse(t_data *data, const char *format) {$/;"	f	typeref:typename:const char *
+precision	inc/ft_printf_utils.h	/^	int		 precision;$/;"	m	struct:__anone90ee2e00308	typeref:typename:int
+put_blank	inc/ft_printf_utils.h	/^	unsigned int put_blank : 1;$/;"	m	struct:__anone90ee2e00208	typeref:typename:unsigned int:1
 s_string	inc/c_string.h	/^typedef struct s_string {$/;"	s
-special	src/ft_vdprintf.c	/^size_t special(string output, const char *format, va_list ap) {$/;"	f	typeref:typename:size_t
 string	inc/c_string.h	/^typedef t_string *string;$/;"	t	typeref:typename:t_string *
+string_append	src/c_string.c	/^void string_append(string str, const char *s, size_t n) {$/;"	f	typeref:typename:void
 string_data	src/c_string.c	/^char *string_data(const string str) {$/;"	f	typeref:typename:char *
 string_delete	src/c_string.c	/^void string_delete(string str) {$/;"	f	typeref:typename:void
 string_length	src/c_string.c	/^size_t string_length(string str) {$/;"	f	typeref:typename:size_t
@@ -41,9 +54,10 @@ string_new	src/c_string.c	/^string string_new(size_t initial_size) {$/;"	f	typer
 string_push_back	src/c_string.c	/^void string_push_back(string str, char c) {$/;"	f	typeref:typename:void
 string_reserve	src/c_string.c	/^void string_reserve(string str, size_t new_cap) {$/;"	f	typeref:typename:void
 string_size	src/c_string.c	/^size_t string_size(string str) {$/;"	f	typeref:typename:size_t
-t_flags	src/ft_vdprintf.c	/^} t_flags;$/;"	t	typeref:struct:s_flags	file:
-t_state	src/ft_vdprintf.c	/^} t_state;$/;"	t	typeref:enum:e_state	file:
+t_data	inc/ft_printf_utils.h	/^} t_data;$/;"	t	typeref:struct:__anone90ee2e00308
+t_flags	inc/ft_printf_utils.h	/^} t_flags;$/;"	t	typeref:struct:__anone90ee2e00208
 t_string	inc/c_string.h	/^} t_string;$/;"	t	typeref:struct:s_string
-use_alternate_form	src/ft_vdprintf.c	/^	unsigned int use_alternate_form : 1;$/;"	m	struct:s_flags	typeref:typename:unsigned int:1	file:
-use_sign	src/ft_vdprintf.c	/^	unsigned int use_sign : 1;$/;"	m	struct:s_flags	typeref:typename:unsigned int:1	file:
-use_zero_padding	src/ft_vdprintf.c	/^	unsigned int use_zero_padding : 1;$/;"	m	struct:s_flags	typeref:typename:unsigned int:1	file:
+use_alternate_form	inc/ft_printf_utils.h	/^	unsigned int use_alternate_form : 1;$/;"	m	struct:__anone90ee2e00208	typeref:typename:unsigned int:1
+use_sign	inc/ft_printf_utils.h	/^	unsigned int use_sign : 1;$/;"	m	struct:__anone90ee2e00208	typeref:typename:unsigned int:1
+use_zero_padding	inc/ft_printf_utils.h	/^	unsigned int use_zero_padding : 1;$/;"	m	struct:__anone90ee2e00208	typeref:typename:unsigned int:1
+width	inc/ft_printf_utils.h	/^	int		 width;$/;"	m	struct:__anone90ee2e00308	typeref:typename:int
