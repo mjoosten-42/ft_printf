@@ -26,7 +26,7 @@ DEBUG   ?= 1
 VERBOSE ?= 0
 
 ifeq ($(DEBUG), 1)
-	CFLAGS += -O0 -g
+	CFLAGS += -O0 -g3
 endif
 
 ifeq ($(VERBOSE), 1)
@@ -60,7 +60,10 @@ re:
 	make all
 
 test:
-	$(CC) main.c $(NAME) -I inc $(LIBFT) && ./a.out
+	$(CC) $(CFLAGS) main.c $(NAME) lib/libft/libft.a && ./a.out
+
+ppe:
+	$(CC) $(CFLAGS) $(INCLUDES) -E src/convert.c | clang-format
 
 files:
 	./make/make_sources.sh

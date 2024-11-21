@@ -1,8 +1,9 @@
 #ifndef FT_PRINTF_UTILS_H
 #define FT_PRINTF_UTILS_H
 
-#include <stdarg.h>
 #include "c_string.h"
+
+#include <stdarg.h>
 
 typedef enum {
 	LENGTH_NONE,
@@ -16,27 +17,21 @@ typedef enum {
 	LENGTH_PTRDIFF_T,
 } e_length;
 
-typedef enum {
-	OTHER,
-	INTEGER,
-	FLOAT,
-} e_conv_type;
-
 typedef struct {
 	unsigned int use_alternate_form : 1;
 	unsigned int use_zero_padding : 1;
 	unsigned int left_align : 1;
 	unsigned int put_blank : 1;
 	unsigned int use_sign : 1;
+	unsigned int group_thousands : 1;
 } t_flags;
 
 typedef struct {
 	t_flags	 flags;
-	int		 width;
-	int		 precision;
+	size_t	 width;
+	size_t	 precision;
 	e_length length;
 	char	 conversion;
-	e_conv_type conv_type;
 } t_data;
 
 const char *convert(string output, const char *format, va_list ap);

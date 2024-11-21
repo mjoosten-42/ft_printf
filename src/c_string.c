@@ -55,10 +55,27 @@ void string_push_back(string str, char c) {
 	str->end++;
 }
 
+void string_push_front(string str, char c) {
+	if (string_size(str) == str->capacity) {
+		string_reserve(str, str->capacity * 2);
+	}
+
+	for (size_t i = string_size(str) + 1; i; i--) {
+		str->begin[i] = str->begin[i - 1];
+	}
+
+	*str->begin = c;
+	str->end++;
+}
+
 void string_append(string str, const char *s, size_t n) {
 	string_reserve(str, string_size(str) + n);
 
 	for (size_t i = 0; i < n && s[i]; i++) {
 		string_push_back(str, s[i]);
 	}
+}
+
+void string_concat(string first, string second) {
+	string_append(first, second->begin, string_length(second));
 }

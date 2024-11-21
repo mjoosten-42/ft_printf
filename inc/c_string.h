@@ -20,6 +20,8 @@ char	 *string_data(const string str);
 
 void string_reserve(string str, size_t size);
 void string_push_back(string str, char c);
+void string_push_front(string str, char c);
 void string_append(string str, const char *s, size_t n);
+void string_concat(string first, string second);
 
 #endif
