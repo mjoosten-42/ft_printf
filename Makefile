@@ -60,7 +60,7 @@ re:
 	make all
 
 test:
-	$(CC) $(CFLAGS) main.c $(NAME) lib/libft/libft.a && ./a.out
+	$(CC) main.c $(NAME) lib/libft/libft.a && ./a.out
 
 ppe:
 	$(CC) $(CFLAGS) $(INCLUDES) -E src/convert.c | clang-format

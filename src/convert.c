@@ -2,7 +2,6 @@
 #include "ft_printf_utils.h"
 #include "libft.h"
 
-// TODO: ' flag
 static const char *flags			   = "#0- +'";
 static const char *length_modifiers	   = "hlqLjzZt";
 static const char *conversions		   = "diouxXeEfFgGaAcsCSPnm%";
@@ -58,9 +57,16 @@ static const char *float_conversions   = "aAeEfFgG";
                                                                \
 		type i			 = 1;                                  \
 		type value_lower = value / basesize;                   \
+		size_t	 digits		 = 1;                                  \
                                                                \
 		while (value_lower / i) {                              \
 			i *= basesize;                                     \
+			digits++;                                          \
+		}                                                      \
+                                                               \
+		while (digits < data.precision) {                      \
+			string_push_back(tmp, '0');                        \
+			digits++;                                          \
 		}                                                      \
                                                                \
 		while (i > 0) {                                        \

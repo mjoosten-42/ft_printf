@@ -6,13 +6,13 @@
 
 #define SIZEOF(array) (sizeof(array) / sizeof(*array))
 
-#define LOOP(array, flags, width, format)                        \
+#define LOOP(array, format)                        \
 	{                                                            \
 		printf("%s\n", #format);                                 \
                                                                  \
 		for (unsigned int i = 0; i < SIZEOF(array); i++) {       \
-			ft_printf("%" #flags #width #format "\n", array[i]); \
-			printf("%" #flags #width #format "\n", array[i]);    \
+			ft_printf(#format "\n", array[i]); \
+			printf(#format "\n", array[i]);    \
 		}                                                        \
 	}
 
@@ -39,16 +39,6 @@ int main() {
 					 9000000000000000000L,
 					 };
 
-	ft_printf("%+i\n", 42);
-
-	LOOP(ints, , 20, i);
-	LOOP(uints, , 20, o);
-	LOOP(uints, , 20, u);
-	LOOP(uints, , 20, x);
-	LOOP(uints, , 20, X);
-	LOOP(uints, #, 20, o);
-	LOOP(uints, #, 20, x);
-	LOOP(uints, #, 20, X);
-	LOOP(ints, +, 20, i);
-	LOOP(longs, , 20, li);
+	LOOP(ints, %20.15i);
+	LOOP(uints, %10.5o);
 }
