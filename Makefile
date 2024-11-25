@@ -63,7 +63,7 @@ test:
 	$(CC) main.c $(NAME) lib/libft/libft.a && ./a.out
 
 ppe:
-	$(CC) $(CFLAGS) $(INCLUDES) -E src/convert.c | clang-format
+	$(CC) $(CFLAGS) $(INCLUDES) -E src/integer.c | clang-format
 
 files:
 	./make/make_sources.sh

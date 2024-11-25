@@ -39,6 +39,4 @@ int main() {
 					 9000000000000000000L,
 					 };
 
-	LOOP(ints, %20.15i);
-	LOOP(uints, %10.5o);
 }
