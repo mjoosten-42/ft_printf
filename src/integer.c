@@ -103,8 +103,12 @@ static int get_basesize(t_data *data) {
 		string_delete(tmp);                                             \
 	}
 
+#pragma GCC diagnostic push
+// Ignored unsigned < 0 comparison
+#pragma GCC diagnostic ignored "-Wtype-limits"
 void CONVERT_INTEGER(signed);
 void CONVERT_INTEGER(unsigned);
+#pragma GCC diagnostic pop
 
 void convert_integer(string output, t_data *data, va_list ap) {
 	intmax_t value	   = 0;
