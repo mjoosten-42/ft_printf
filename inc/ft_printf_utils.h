@@ -12,6 +12,8 @@ typedef struct {
 	unsigned int put_blank : 1;
 	unsigned int use_sign : 1;
 	unsigned int group_thousands : 1;
+
+	unsigned int precision_provided : 1;
 } t_flags;
 
 typedef struct {
@@ -25,5 +27,7 @@ typedef struct {
 const char *convert(string output, const char *format, va_list ap);
 const char *parse(t_data *data, const char *format);
 void		convert_integer(string output, t_data *data, va_list ap);
+void		convert_float(string output, t_data *data, va_list ap);
+void		convert_other(string output, t_data *data, va_list ap);
 
 #endif

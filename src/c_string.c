@@ -1,6 +1,7 @@
 #include "c_string.h"
 
-#include <stdio.h>
+#include "libft.h"
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -68,7 +69,11 @@ void string_push_front(string str, char c) {
 	str->end++;
 }
 
-void string_append(string str, const char *s, size_t n) {
+void string_append(string str, const char *s) {
+	string_append_n(str, s, ft_strlen(s));
+}
+
+void string_append_n(string str, const char *s, size_t n) {
 	string_reserve(str, string_size(str) + n);
 
 	for (size_t i = 0; i < n && s[i]; i++) {
@@ -77,5 +82,5 @@ void string_append(string str, const char *s, size_t n) {
 }
 
 void string_concat(string first, string second) {
-	string_append(first, second->begin, string_length(second));
+	string_append(first, second->begin);
 }

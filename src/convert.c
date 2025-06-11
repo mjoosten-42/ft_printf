@@ -15,7 +15,7 @@ const char *convert(string output, const char *format, va_list ap) {
 	format = parse(&data, format);
 
 	if (!data.conversion) {
-		string_append(output, fmt_cpy, format - fmt_cpy);
+		string_append_n(output, fmt_cpy, format - fmt_cpy);
 
 		return format;
 	}
@@ -32,11 +32,12 @@ const char *convert(string output, const char *format, va_list ap) {
 
 	// TODO
 	else if (ft_strchr(float_conversions, data.conversion)) {
-
+		convert_float(output, &data, ap);
 	}
 
 	// TODO
 	else {
+		convert_other(output, &data, ap);
 	}
 
 	return format;
@@ -79,6 +80,8 @@ const char *parse(t_data *data, const char *format) {
 
 	// precision
 	if (*format == '.') {
+		data->flags.precision_provided = 1;
+
 		format++;
 
 		while (ft_isdigit(*format)) {
@@ -92,6 +95,15 @@ const char *parse(t_data *data, const char *format) {
 
 		if (*format == 'h' || *format == 'l') {
 			data->length[1] = *format++;
+		}
+
+		if (data->length[0] == 'q') {
+			data->length[0] = 'l';
+			data->length[1] = 'l';
+		}
+
+		if (data->length[0] == 'Z') {
+			data->length[0] = 'z';
 		}
 	}
 

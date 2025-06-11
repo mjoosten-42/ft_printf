@@ -1,42 +1,50 @@
 #include "inc/ft_printf.h"
 
+#include <limits.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <sys/types.h>
-#include <limits.h>
+#include <unistd.h>
 
 #define SIZEOF(array) (sizeof(array) / sizeof(*array))
 
-#define LOOP(array, format)                        \
-	{                                                            \
-		printf("%s\n", #format);                                 \
-                                                                 \
-		for (unsigned int i = 0; i < SIZEOF(array); i++) {       \
-			ft_printf(#format "\n", array[i]); \
-			printf(#format "\n", array[i]);    \
-		}                                                        \
+#define COMPARE(format, ...)\
+{\
+	ft_printf(format "\n" __VA_OPT__(,) __VA_ARGS__);	\
+	printf(format "\n" __VA_OPT__(,)  __VA_ARGS__);	\
+}
+
+#define LOOP(array, format)                                \
+	{                                                      \
+		printf("[%s]\n", format);                          \
+                                                           \
+		for (unsigned int i = 0; i < SIZEOF(array); i++) { \
+			COMPARE(format, array[i]);                 \
+		}                                                  \
 	}
 
 int main() {
-	int ints[] = { -42, 0,			42,			 1,			 -1,		 100,
-				   111, 2000000000, -2000000000, INT_MIN, INT_MAX };
-	unsigned int uints[] = { 0,			 1,			 42,		 100,		111,
-							 2000000000, 2147483647, 4000000000, UINT_MAX };
+	int nothing[0];
+	int				   ints[]	 = { 0, 1, 42, 111, INT_MAX, -1, -42, INT_MIN };
+	unsigned int	   uints[]	 = { 0, 1, 42, 111, INT_MAX, UINT_MAX };
+	long			   longs[]	 = { 0, 1, 42, 111, INT_MAX, -1, -42, INT_MIN, LONG_MAX, LONG_MIN };
+	unsigned long	   ulongs[]	 = { 0, 1, 42, 111, INT_MAX, LONG_MAX, ULONG_MAX };
+	long long		   llongs[]	 = { 0, 1, 42, 111, INT_MAX, -1, -42, INT_MIN, LONG_MAX, LONG_MIN ,LLONG_MIN, LLONG_MAX };
+	unsigned long long ullongs[] = { 0, 1, 42, 111, INT_MAX, LONG_MAX, ULONG_MAX, ULLONG_MAX };
+	const char		   *strs[]	 = { "", "ft_printf" };
 
-	long longs[] = { -42,
-					 0,
-					 42,
-					 1,
-					 -1,
-					 100,
-					 111,
-					 2000000000,
-					 -2000000000,
-					 2147483647,
-					 -2147483648,
-					 LONG_MIN,
-					 LONG_MAX,
-					 -9000000000000000000L,
-					 9000000000000000000L,
-					 };
+	LOOP(ints, "%20i");
+	LOOP(uints, "%20u");
+	LOOP(longs, "%20li");
+	LOOP(ulongs, "%20lu");
+	LOOP(llongs, "%20lli");
+	LOOP(ullongs, "%20llu");
 
+	LOOP(strs, "%20s");
+	LOOP(strs, "%20p");
+
+	close(-1);
+
+	COMPARE("%m");
+	COMPARE("%#m");
 }
